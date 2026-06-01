@@ -7,6 +7,39 @@ import Foundation
 
 // MARK: - Metadata Models
 
+/// Checklist 验证项
+public struct ChecklistItem: Codable {
+    /// 描述要检查什么行为
+    public let desc: String
+    /// 如何检查（自然语言描述 + API 参考）
+    public let verify: String
+    /// 已知条件/上下文
+    public let know: String
+    /// 失败时如何调试
+    public let debug: String
+
+    public init(desc: String, verify: String, know: String, debug: String) {
+        self.desc = desc
+        self.verify = verify
+        self.know = know
+        self.debug = debug
+    }
+}
+
+/// 带 checklist 的动作执行结果
+public struct ActionResultWithChecklist: Codable {
+    public let success: Bool
+    public let message: String
+    public let checklist: [ChecklistItem]
+
+    public init(success: Bool, message: String, checklist: [ChecklistItem]) {
+        self.success = success
+        self.message = message
+        self.checklist = checklist
+    }
+}
+
+
 /// API 参数描述
 public struct APIParameterDescriptor: Codable {
     public let name: String
