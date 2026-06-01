@@ -9,6 +9,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'GCDWebServer', '~> 3.5'
 
+  s.preserve_paths = ['skills/**/*', 'scripts/**/*']
+
   s.test_spec 'Tests' do |test|
     test.source_files = 'Tests/**/*.swift'
     test.requires_app_host = true
